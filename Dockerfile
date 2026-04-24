@@ -5,7 +5,7 @@ WORKDIR /home/gradle/src
 RUN ./gradlew build -x test --no-daemon
 
 # Run stage
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:17-jdk-jammy
 EXPOSE 8080
 RUN mkdir /app
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-app.jar
