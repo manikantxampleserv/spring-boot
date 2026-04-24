@@ -2,6 +2,7 @@
 FROM gradle:8.7-jdk17 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
+RUN chmod +x gradlew
 RUN ./gradlew build -x test --no-daemon
 
 # Run stage
