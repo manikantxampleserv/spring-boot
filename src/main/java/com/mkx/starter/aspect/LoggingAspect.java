@@ -13,13 +13,6 @@ public class LoggingAspect {
 
     @Around("execution(* com.mkx.starter.service.*.*(..))")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
-        long start = System.currentTimeMillis();
-        
-        Object proceed = joinPoint.proceed();
-        
-        long executionTime = System.currentTimeMillis() - start;
-        
-        log.info("[PERF] {} executed in {} ms", joinPoint.getSignature(), executionTime);
-        return proceed;
+        return joinPoint.proceed();
     }
 }
